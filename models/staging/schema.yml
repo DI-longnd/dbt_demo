@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: stg_regions
+    description: "Staging table for geographic regions"
+    columns:
+      - name: region_id
+        description: "Unique region identifier"
+        tests:
+          - not_null
+          - unique
+      - name: region
+        description: "Region name"
+        tests:
+          - not_null
+
+  - name: stg_customers
+    description: "Staging table for customer dimension"
+    columns:
+      - name: customer_id
+        description: "Unique customer identifier"
+        tests:
+          - not_null
+          - unique
+      - name: email
+        description: "Customer email address"
+        tests:
+          - valid_email
+      - name: full_name
+        description: "Customer full name"
+        tests:
+          - not_null
+      - name: state
+        description: "Customer state"
+        tests:
+          - accepted_values:
+              values: ['CA', 'TX', 'NY', 'FL', 'IL', 'PA', 'OH', 'Unknown']
+              quote: true
+              severity: warn
+
+  - name: stg_products
+    description: "Staging table for product dimension"
+    columns:
+      - name: product_id
+        description: "Unique product identifier"
+        tests:
+          - not_null
+          - unique
+      - name: price
+        description: "Product price"
+        tests:
+          - not_null
+          - positive_values
+      - name: category
+        description: "Product category"
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: "Staging table for orders fact"
+    columns:
+      - name: order_id
+        description: "Unique order identifier"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Reference to customer"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: product_id
+        description: "Reference to product"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+      - name: order_date
+        description: "Date of order"
+        tests:
+          - not_null
+      - name: quantity
+        description: "Order quantity"
+        tests:
+          - not_null
+          - positive_values
+      - name: total_amount
+        description: "Total order amount"
+        tests:
+          - not_null
+          - positive_values
+      - name: unit_price
+        description: "Price per unit"
+        tests:
+          - positive_values

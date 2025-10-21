@@ -1,0 +1,87 @@
+version: 2
+
+sources:
+  - name: raw_data
+    description: "Raw data from Parquet files in ClickHouse user_files directory"
+    tables:
+      - name: regions_parquet
+        description: "Geographic regions data from Parquet"
+        meta:
+          external_location: "file('regions.parquet', 'Parquet')"
+        columns:
+          - name: region_id
+            description: "Unique identifier for region"
+            tests:
+              - not_null
+              - unique
+          - name: region
+            description: "Region name"
+
+      - name: customers_parquet
+        description: "Customer dimension data from Parquet"
+        meta:
+          external_location: "file('customers.parquet', 'Parquet')"
+        columns:
+          - name: customer_id
+            description: "Unique identifier for customer"
+            tests:
+              - not_null
+              - unique
+          - name: first_name
+            description: "Customer first name"
+          - name: last_name
+            description: "Customer last name"
+          - name: email
+            description: "Customer email address"
+          - name: city
+            description: "Customer city"
+          - name: state
+            description: "Customer state"
+
+      - name: products_parquet
+        description: "Product dimension data from Parquet"
+        meta:
+          external_location: "file('products.parquet', 'Parquet')"
+        columns:
+          - name: product_id
+            description: "Unique identifier for product"
+            tests:
+              - not_null
+              - unique
+          - name: product_name
+            description: "Product name"
+          - name: category
+            description: "Product category"
+          - name: brand
+            description: "Product brand"
+          - name: price
+            description: "Product price"
+            tests:
+              - not_null
+
+      - name: orders_parquet
+        description: "Orders fact data from Parquet"
+        meta:
+          external_location: "file('orders.parquet', 'Parquet')"
+        columns:
+          - name: order_id
+            description: "Unique identifier for order"
+            tests:
+              - not_null
+              - unique
+          - name: customer_id
+            description: "Reference to customer"
+            tests:
+              - not_null
+          - name: product_id
+            description: "Reference to product"
+            tests:
+              - not_null
+          - name: order_date
+            description: "Date of order"
+            tests:
+              - not_null
+          - name: quantity
+            description: "Quantity ordered"
+          - name: total_amount
+            description: "Total order amount"

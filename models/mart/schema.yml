@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: mart_customer_lifetime_value
+    description: "Customer Lifetime Value analysis with segmentation"
+    columns:
+      - name: customer_id
+        description: "Unique customer identifier"
+        tests:
+          - not_null
+          - unique
+      - name: customer_segment
+        description: "Customer value segment (VIP, High, Medium, Low)"
+      - name: customer_status
+        description: "Customer activity status (Active, At Risk, Churned)"
+      - name: total_revenue
+        description: "Total lifetime revenue from customer"
+        tests:
+          - not_null
+      - name: customer_tenure_months
+        description: "Number of months customer has been active"
+
+  - name: mart_monthly_sales_summary
+    description: "Monthly sales performance and growth metrics"
+    columns:
+      - name: year_month
+        description: "Month of sales data"
+        tests:
+          - not_null
+          - unique
+      - name: total_revenue
+        description: "Total revenue for the month"
+      - name: profit_margin_pct
+        description: "Profit margin percentage"
+      - name: revenue_growth_pct
+        description: "Month-over-month revenue growth percentage"
