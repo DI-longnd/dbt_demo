@@ -10,13 +10,6 @@ Một pipeline dữ liệu hoàn chỉnh minh họa sức mạnh của dbt với
 * [Cấu trúc dự án](#-cấu-trúc-dự-án)
 * [Các tầng Pipeline](#-các-tầng-pipeline)
 * [Chạy Pipeline](#-chạy-pipeline)
-* [Tính năng chính](#-tính-năng-chính)
-* [Truy vấn mẫu](#-truy-vấn-mẫu)
-* [Xử lý sự cố](#-xử-lý-sự-cố)
-* [Tài nguyên tham khảo](#-tài-nguyên-tham-khảo)
-* [Đóng góp](#-đóng-góp)
-* [Giấy phép](#-giấy-phép)
-
 ---
 
 ## 🎯 Tổng quan
