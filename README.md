@@ -93,15 +93,18 @@ docker exec clickhouse-local ls -la /var/lib/clickhouse/user_files/
 ### Bước 3: Cài đặt dbt và các thư viện phụ thuộc
 
 # Tạo môi trường ảo (khuyến nghị)
+```bash
 uv venv
 source venv/bin/activate  
-
+```
 # Cài đặt dbt-clickhouse
+```bash
 uv pip install dbt-clickhouse
-
+```
 # Xác minh cài đặt
+```bash
 dbt --version
-
+```
 
 ### Bước 4: Cấu hình dbt Profile
 Tạo/chỉnh sửa file ~/.dbt/profiles.yml:
