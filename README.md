@@ -43,7 +43,7 @@ Dự án này minh họa một pipeline phân tích hoàn chỉnh sử dụng **
 * Adapter `dbt-clickhouse`
 
 ### File dữ liệu
-Bạn cần các file Parquet sau:
+Bạn cần các file Parquet sau: (Mình đã để ở mục parquet_sources, bạn có thể download)
 * `regions.parquet`
 * `customers.parquet`
 * `products.parquet`
