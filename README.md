@@ -161,6 +161,8 @@ touch models/marts/schema.yml
 
 
 ### Bước 7: Tạo các model dbt
+
+```bash
 Sao chép các file model vào các thư mục thích hợp:
 
 - Staging Models (models/staging/):
@@ -177,7 +179,7 @@ Sao chép các file model vào các thư mục thích hợp:
 + mart_customer_lifetime_value.sql
 + mart_monthly_sales_summary.sql
 
-
+```
 
 ### Bước 8: Chạy Pipeline
 ```bash
