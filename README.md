@@ -59,6 +59,7 @@ Bạn cần các file Parquet sau: (Mình đã để ở mục parquet_sources, 
 # Chạy ClickHouse container
 docker run -d \
   --name clickhouse-local \
+  -e CLICKHOUSE_PASSWORD=123456 \
   -p 9000:9000 \
   -p 18123:8123 \
   clickhouse/clickhouse-server
@@ -68,7 +69,7 @@ docker ps | grep clickhouse
 
 ```
 
-### Bước 2: Sao chép file dữ liệu vào ClickHouse
+### Bước 2: Sao chép file dữ liệu vào ClickHouse (Nếu sử dụng vị trí của files y như tutorial thì sao chép y nguyên path vào ở dưới)
 
 
 ```bash
@@ -122,7 +123,7 @@ my_clickhouse_project:
 
 
 
-### Bước 5: Khởi tạo dự án dbt
+### Bước 5: Khởi tạo dự án dbt (Khi clone về rồi thì đã được tạo sẵn rồi nên không cần setup lại)
 ```bash
 # Nếu bắt đầu từ đầu
 dbt init my_clickhouse_project
@@ -134,7 +135,7 @@ dbt debug
 
 
 
-### Bước 6: Thiết lập cấu trúc dự án
+### Bước 6: Thiết lập cấu trúc dự án (Nếu mới cứng thì mới làm, còn không thì không cần phải thực hiện bước này)
 
 ```bash
 # Tạo cấu trúc thư mục
@@ -153,7 +154,7 @@ touch models/marts/schema.yml
 
 
 
-### Bước 7: Tạo các model dbt
+### Bước 7: Tạo các model dbt (Nếu mới cứng thì mới làm, còn không thì không cần phải thực hiện bước này vì clone đã thực hiện hết rồi)
 
 ```bash
 Sao chép các file model vào các thư mục thích hợp:
