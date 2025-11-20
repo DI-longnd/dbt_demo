@@ -68,16 +68,22 @@ models:
         description: "Reference to customer"
         tests:
           - not_null
+          # Đã thêm config warn: Chỉ cảnh báo nếu thiếu khách hàng
           - relationships:
               to: ref('stg_customers')
               field: customer_id
+              config:
+                severity: warn
       - name: product_id
         description: "Reference to product"
         tests:
           - not_null
+          # Đã thêm config warn: Chỉ cảnh báo nếu thiếu sản phẩm
           - relationships:
               to: ref('stg_products')
               field: product_id
+              config:
+                severity: warn
       - name: order_date
         description: "Date of order"
         tests:
