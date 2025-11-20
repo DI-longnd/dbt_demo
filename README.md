@@ -113,7 +113,7 @@ my_clickhouse_project:
       host: localhost
       port: 18123
       user: default
-      password: ""
+      password: "123456"
       database: default
       schema: default
       secure: false
